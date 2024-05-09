@@ -1,0 +1,49 @@
+import { Component, inject } from '@angular/core';
+import { ProductsService } from '../../shared/services/products.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute, Router } from '@angular/router';
+import { IProduct } from '../../shared/interfaces/product.interface';
+import { FormComponent } from '../../shared/components/form/form.component';
+
+@Component({
+  selector: 'app-edit',
+  standalone: true,
+  imports: [ FormComponent ],
+  templateUrl: './edit.component.html',
+  styleUrl: './edit.component.scss'
+})
+export class EditComponent {
+
+  productService = inject(ProductsService)
+  matSnackBar = inject(MatSnackBar)
+  router = inject(Router)
+
+  product: IProduct = inject(ActivatedRoute).snapshot.data['product']
+
+  onSubmit(product: IProduct):void{
+    const producId: string =  this.product.id
+    this.productService.put(producId, product ).subscribe(
+      {
+        next:()=>{
+          this.handleOnSubmitSucess()
+      },
+      error:() =>{
+        console.log("error")
+      }
+    });
+  }
+
+  private handleOnSubmitSucess():void{
+    this.showMessage();
+    this.navigatePreviousPage()
+  }
+
+  private showMessage():void{
+    this.matSnackBar.open("Produto alterado com sucesso.", 'Ok')
+  }
+
+  private navigatePreviousPage():void{
+    this.router.navigateByUrl('/')
+  }
+
+}

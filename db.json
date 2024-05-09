@@ -1,0 +1,48 @@
+{
+  "products": [
+    {
+      "title": "editando novo",
+      "id": "1435"
+    },
+    {
+      "id": "f671",
+      "title": "produto de para teste"
+    },
+    {
+      "id": "259c",
+      "title": "produto de para teste2"
+    },
+    {
+      "id": "48a1",
+      "title": "produto de para teste3"
+    },
+    {
+      "id": "1f63",
+      "title": "produto de para teste4"
+    },
+    {
+      "id": "e83e",
+      "title": "produto de para teste5"
+    },
+    {
+      "id": "dd3f",
+      "title": "produto de para teste6"
+    },
+    {
+      "id": "ce44",
+      "title": "caderno"
+    },
+    {
+      "id": "44f9",
+      "title": "cadeira"
+    },
+    {
+      "id": "6342",
+      "title": "moletom"
+    },
+    {
+      "title": "produto com form shared editado",
+      "id": "4f7c"
+    }
+  ]
+}

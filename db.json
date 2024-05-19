@@ -1,10 +1,6 @@
 {
   "products": [
     {
-      "title": "editando novo",
-      "id": "1435"
-    },
-    {
       "id": "f671",
       "title": "produto de para teste"
     },
@@ -29,10 +25,6 @@
       "title": "produto de para teste6"
     },
     {
-      "id": "ce44",
-      "title": "caderno"
-    },
-    {
       "id": "44f9",
       "title": "cadeira"
     },
@@ -41,8 +33,8 @@
       "title": "moletom"
     },
     {
-      "title": "produto com form shared editado",
-      "id": "4f7c"
+      "id": "690c",
+      "title": "caderno"
     }
   ]
 }

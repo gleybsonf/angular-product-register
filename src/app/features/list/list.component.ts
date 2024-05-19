@@ -1,5 +1,5 @@
 
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { ProductsService } from "../../shared/services/products.service"
 import { IProduct } from '../../shared/interfaces/product.interface';
 import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from "@angular/material/dialog"
@@ -8,21 +8,23 @@ import { CardComponent } from './components/card/card.component';
 import { Router, RouterLink } from '@angular/router';
 import { filter } from 'rxjs';
 import { ConfirnationDialogService } from '../../shared/services/confirnation-dialog.service';
+import { NoItensComponent } from './components/no-itens/no-itens.component';
 
  
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CardComponent, RouterLink, MatButtonModule],
+  imports: [CardComponent, RouterLink, MatButtonModule, NoItensComponent],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss'
 })
 export class ListComponent implements OnInit { 
 
-  products: IProduct[] = []; 
   productService = inject(ProductsService)
   router = inject(Router)
   confirnationDialogService = inject( ConfirnationDialogService)
+
+  productsSignal = signal<IProduct[]>([])
 
   constructor( ){ }
 
@@ -33,8 +35,7 @@ export class ListComponent implements OnInit {
   private getAllProducts():void{
     this.productService.getAllProducts().subscribe({
       next: ( data: IProduct[])=> {
-          this.products = data
-           
+          this.productsSignal.set(data)           
       }, error: (error)=>{
         console.log("getAllProducts error", error)
       }
